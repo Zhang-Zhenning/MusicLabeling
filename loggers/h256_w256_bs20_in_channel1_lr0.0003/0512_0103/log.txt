@@ -1,0 +1,131 @@
+cur device is:  cuda:0
+BasicModel(
+  (backbone): Sequential(
+    (input-conv2d): Conv2d(1, 2, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+    (input-bn): BatchNorm2d(2, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (input-maxPool): MaxPool2d(kernel_size=(3, 3), stride=2, padding=(1, 1), dilation=1, ceil_mode=False)
+    (input-relu): ReLU(inplace=True)
+    (0:inter-2-4-conv2d): Conv2d(2, 4, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+    (0:inter-bn): BatchNorm2d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (0:inter-maxPool): MaxPool2d(kernel_size=(3, 3), stride=2, padding=(1, 1), dilation=1, ceil_mode=False)
+    (0:inter-relu): ReLU(inplace=True)
+    (1:inter-4-8-conv2d): Conv2d(4, 8, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+    (1:inter-bn): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (1:inter-maxPool): MaxPool2d(kernel_size=(3, 3), stride=2, padding=(1, 1), dilation=1, ceil_mode=False)
+    (1:inter-relu): ReLU(inplace=True)
+  )
+  (conv1): Conv2d(8, 97, kernel_size=(3, 3), stride=(2, 2))
+  (classifier): Softmax(dim=1)
+  (loss): MSELoss()
+)
+---------------------------TRIANING----------------------------
+epoch:0 trainLoss:nan
+TESTING: epoch:0 testLoss:nan
+epoch:1 trainLoss:nan
+epoch:2 trainLoss:nan
+epoch:3 trainLoss:nan
+epoch:4 trainLoss:nan
+epoch:5 trainLoss:nan
+epoch:6 trainLoss:nan
+epoch:7 trainLoss:nan
+epoch:8 trainLoss:nan
+epoch:9 trainLoss:nan
+epoch:10 trainLoss:nan
+TESTING: epoch:10 testLoss:nan
+epoch:11 trainLoss:nan
+epoch:12 trainLoss:nan
+epoch:13 trainLoss:nan
+epoch:14 trainLoss:nan
+epoch:15 trainLoss:nan
+epoch:16 trainLoss:nan
+epoch:17 trainLoss:nan
+epoch:18 trainLoss:nan
+epoch:19 trainLoss:nan
+epoch:20 trainLoss:nan
+TESTING: epoch:20 testLoss:nan
+epoch:21 trainLoss:nan
+epoch:22 trainLoss:nan
+epoch:23 trainLoss:nan
+epoch:24 trainLoss:nan
+epoch:25 trainLoss:nan
+epoch:26 trainLoss:nan
+epoch:27 trainLoss:nan
+epoch:28 trainLoss:nan
+epoch:29 trainLoss:nan
+epoch:30 trainLoss:nan
+TESTING: epoch:30 testLoss:nan
+epoch:31 trainLoss:nan
+epoch:32 trainLoss:nan
+epoch:33 trainLoss:nan
+epoch:34 trainLoss:nan
+epoch:35 trainLoss:nan
+epoch:36 trainLoss:nan
+epoch:37 trainLoss:nan
+epoch:38 trainLoss:nan
+epoch:39 trainLoss:nan
+epoch:40 trainLoss:nan
+TESTING: epoch:40 testLoss:nan
+epoch:41 trainLoss:nan
+epoch:42 trainLoss:nan
+epoch:43 trainLoss:nan
+epoch:44 trainLoss:nan
+epoch:45 trainLoss:nan
+epoch:46 trainLoss:nan
+epoch:47 trainLoss:nan
+epoch:48 trainLoss:nan
+epoch:49 trainLoss:nan
+epoch:50 trainLoss:nan
+TESTING: epoch:50 testLoss:nan
+epoch:51 trainLoss:nan
+epoch:52 trainLoss:nan
+epoch:53 trainLoss:nan
+epoch:54 trainLoss:nan
+epoch:55 trainLoss:nan
+epoch:56 trainLoss:nan
+epoch:57 trainLoss:nan
+epoch:58 trainLoss:nan
+epoch:59 trainLoss:nan
+epoch:60 trainLoss:nan
+TESTING: epoch:60 testLoss:nan
+epoch:61 trainLoss:nan
+epoch:62 trainLoss:nan
+epoch:63 trainLoss:nan
+epoch:64 trainLoss:nan
+epoch:65 trainLoss:nan
+epoch:66 trainLoss:nan
+epoch:67 trainLoss:nan
+epoch:68 trainLoss:nan
+epoch:69 trainLoss:nan
+epoch:70 trainLoss:nan
+TESTING: epoch:70 testLoss:nan
+epoch:71 trainLoss:nan
+epoch:72 trainLoss:nan
+epoch:73 trainLoss:nan
+epoch:74 trainLoss:nan
+epoch:75 trainLoss:nan
+epoch:76 trainLoss:nan
+epoch:77 trainLoss:nan
+epoch:78 trainLoss:nan
+epoch:79 trainLoss:nan
+epoch:80 trainLoss:nan
+TESTING: epoch:80 testLoss:nan
+epoch:81 trainLoss:nan
+epoch:82 trainLoss:nan
+epoch:83 trainLoss:nan
+epoch:84 trainLoss:nan
+epoch:85 trainLoss:nan
+epoch:86 trainLoss:nan
+epoch:87 trainLoss:nan
+epoch:88 trainLoss:nan
+epoch:89 trainLoss:nan
+epoch:90 trainLoss:nan
+TESTING: epoch:90 testLoss:nan
+epoch:91 trainLoss:nan
+epoch:92 trainLoss:nan
+epoch:93 trainLoss:nan
+epoch:94 trainLoss:nan
+epoch:95 trainLoss:nan
+epoch:96 trainLoss:nan
+epoch:97 trainLoss:nan
+epoch:98 trainLoss:nan
+epoch:99 trainLoss:nan
