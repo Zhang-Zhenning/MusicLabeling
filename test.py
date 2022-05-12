@@ -10,9 +10,7 @@ import numpy as np
 import random
 import torch.backends.cudnn as cudnn
 from torch.utils.data import DataLoader
-from model import BasicModel
 from utils import *
-import torch.optim as optim
 import random
 
 

@@ -42,18 +42,11 @@ if __name__ == "__main__":
     parser.add_argument('--epoch', type=int, default=100,
                         help='number of epochs to train for')
     parser.add_argument('--lr', type=float, default=3e-4, help='learning rate')
-    parser.add_argument('--beta', type=float, default=0.9,
-                        help='beta for adam. default=0.9')
-    parser.add_argument('--ngpu', type=int, default=2,
-                        help='number of GPUs to use')
-    parser.add_argument('--experiment', default="models/dolphin-split",
-                        help='Where to store samples and models')
+ 
     parser.add_argument('--h', type=int, default=256,
                         help='height of input images')
     parser.add_argument('--w', type=int, default=256,
                         help='width of input images')
-    parser.add_argument('--log_dir', type=str,
-                        default='log', help='directory of log')
     parser.add_argument('--record', type=str, default='True',
                         help='whether log is needed')
     parser.add_argument('--gpu', type=str, default='1', help='current gpu')
@@ -70,22 +63,19 @@ if __name__ == "__main__":
     # --------------------------------------parse config-----------------------------------
     commands = parser.parse_args()
     
-    if commands.train == True:
-        # setup random seed
-        torch.manual_seed(commands.seed)
-        torch.cuda.manual_seed_all(commands.seed)
-        np.random.seed(commands.seed)
-        random.seed(commands.seed)
+    # setup random seed
+    torch.manual_seed(commands.seed)
+    torch.cuda.manual_seed_all(commands.seed)
+    np.random.seed(commands.seed)
+    random.seed(commands.seed)
 
-        # setup device info
-        device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
-        cudnn.benchmark = True
+    # setup device info
+    device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
+    cudnn.benchmark = True
     
-    if commands.train == True:
-        types = load_obj("./tools/types")
-        commands.output_size = len(types)
-    else:
-        commands.output_size = 97
+    types = load_obj("./tools/types")
+    commands.output_size = len(types)
+  
     
 
     
@@ -158,9 +148,8 @@ if __name__ == "__main__":
         model.train()
         
         # start training
-        loss_logger = []
     
-        print("-----------------------------TRIANING------------------------------")
+        print("---------------------------START TRIANING----------------------------")
         for cur_epoch in range(commands.epoch):
             total_loss = 0
             num_loss = 0
@@ -177,7 +166,6 @@ if __name__ == "__main__":
                 cur_loss.backward(retain_graph=True)
                 optimizer.step()
 
-                loss_logger.append((cur_epoch,cur_loss.detach().item()))
                 total_loss += cur_loss.detach().item()
                 num_loss += 1
 
@@ -235,6 +223,8 @@ if __name__ == "__main__":
 
         
         print("-----------------------------TESTING MODE------------------------------")
+        print(device)
+        print(model)
 
         # start evaluating
         for (eval_batch,eval_label) in eval_dataloader:
