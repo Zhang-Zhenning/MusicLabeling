@@ -1,0 +1,133 @@
+---------------------------TRIANING MODE----------------------------
+cur device is:  cuda:0
+BasicModel(
+  (backbone): Sequential(
+    (input-conv2d): Conv2d(1, 2, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+    (input-bn): BatchNorm2d(2, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (input-maxPool): MaxPool2d(kernel_size=(3, 3), stride=2, padding=(1, 1), dilation=1, ceil_mode=False)
+    (input-relu): ReLU(inplace=True)
+    (0:inter-2-4-conv2d): Conv2d(2, 4, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+    (0:inter-bn): BatchNorm2d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (0:inter-maxPool): MaxPool2d(kernel_size=(3, 3), stride=2, padding=(1, 1), dilation=1, ceil_mode=False)
+    (0:inter-relu): ReLU(inplace=True)
+    (1:inter-4-8-conv2d): Conv2d(4, 8, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+    (1:inter-bn): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (1:inter-maxPool): MaxPool2d(kernel_size=(3, 3), stride=2, padding=(1, 1), dilation=1, ceil_mode=False)
+    (1:inter-relu): ReLU(inplace=True)
+  )
+  (conv1): Conv2d(8, 194, kernel_size=(3, 3), stride=(2, 2))
+  (classifier): Softmax(dim=1)
+  (loss): MSELoss()
+  (loss_ce): BCELoss()
+)
+---------------------------START TRIANING----------------------------
+epoch:0 trainLoss:12.18786096572876
+TESTING: epoch:0 testLoss:10.751531791687011
+epoch:1 trainLoss:10.274644613265991
+epoch:2 trainLoss:9.874384784698487
+epoch:3 trainLoss:9.753765344619751
+epoch:4 trainLoss:9.692707967758178
+epoch:5 trainLoss:9.646910095214844
+epoch:6 trainLoss:9.60335021018982
+epoch:7 trainLoss:9.562584590911865
+epoch:8 trainLoss:9.523734903335571
+epoch:9 trainLoss:9.48680338859558
+epoch:10 trainLoss:9.451647424697876
+TESTING: epoch:10 testLoss:9.695808219909669
+epoch:11 trainLoss:9.414455652236938
+epoch:12 trainLoss:9.37915244102478
+epoch:13 trainLoss:9.34462504386902
+epoch:14 trainLoss:9.310909080505372
+epoch:15 trainLoss:9.276843500137328
+epoch:16 trainLoss:9.245435619354248
+epoch:17 trainLoss:9.213484764099121
+epoch:18 trainLoss:9.1834077835083
+epoch:19 trainLoss:9.154009532928466
+epoch:20 trainLoss:9.124624300003052
+TESTING: epoch:20 testLoss:9.6309663772583
+epoch:21 trainLoss:9.094745540618897
+epoch:22 trainLoss:9.066968393325805
+epoch:23 trainLoss:9.039069366455077
+epoch:24 trainLoss:9.012120485305786
+epoch:25 trainLoss:8.984259510040284
+epoch:26 trainLoss:8.961563158035279
+epoch:27 trainLoss:8.930574798583985
+epoch:28 trainLoss:8.90265679359436
+epoch:29 trainLoss:8.876315498352051
+epoch:30 trainLoss:8.850839567184448
+TESTING: epoch:30 testLoss:9.668150901794434
+epoch:31 trainLoss:8.825608015060425
+epoch:32 trainLoss:8.801411294937134
+epoch:33 trainLoss:8.778208160400391
+epoch:34 trainLoss:8.751782894134521
+epoch:35 trainLoss:8.727798891067504
+epoch:36 trainLoss:8.704963207244873
+epoch:37 trainLoss:8.680279231071472
+epoch:38 trainLoss:8.65635917186737
+epoch:39 trainLoss:8.633114457130432
+epoch:40 trainLoss:8.609477305412293
+TESTING: epoch:40 testLoss:9.733222961425781
+epoch:41 trainLoss:8.589635300636292
+epoch:42 trainLoss:8.565634894371033
+epoch:43 trainLoss:8.545452809333801
+epoch:44 trainLoss:8.520885181427001
+epoch:45 trainLoss:8.499214124679565
+epoch:46 trainLoss:8.477302289009094
+epoch:47 trainLoss:8.45658781528473
+epoch:48 trainLoss:8.435304737091064
+epoch:49 trainLoss:8.412210083007812
+epoch:50 trainLoss:8.38916735649109
+TESTING: epoch:50 testLoss:9.817780113220214
+epoch:51 trainLoss:8.368564438819885
+epoch:52 trainLoss:8.347854685783386
+epoch:53 trainLoss:8.32544379234314
+epoch:54 trainLoss:8.30791015625
+epoch:55 trainLoss:8.284038400650024
+epoch:56 trainLoss:8.263619828224183
+epoch:57 trainLoss:8.23980484008789
+epoch:58 trainLoss:8.218173813819885
+epoch:59 trainLoss:8.19758358001709
+epoch:60 trainLoss:8.173927760124206
+TESTING: epoch:60 testLoss:9.927900695800782
+epoch:61 trainLoss:8.154911541938782
+epoch:62 trainLoss:8.132808208465576
+epoch:63 trainLoss:8.11422905921936
+epoch:64 trainLoss:8.09189169406891
+epoch:65 trainLoss:8.073061776161193
+epoch:66 trainLoss:8.053842186927795
+epoch:67 trainLoss:8.032161521911622
+epoch:68 trainLoss:8.014794850349427
+epoch:69 trainLoss:7.997143292427063
+epoch:70 trainLoss:7.976945471763611
+TESTING: epoch:70 testLoss:10.036314582824707
+epoch:71 trainLoss:7.957613253593445
+epoch:72 trainLoss:7.9415669441223145
+epoch:73 trainLoss:7.921876120567322
+epoch:74 trainLoss:7.901383686065674
+epoch:75 trainLoss:7.8829447507858275
+epoch:76 trainLoss:7.867361330986023
+epoch:77 trainLoss:7.848229002952576
+epoch:78 trainLoss:7.834826707839966
+epoch:79 trainLoss:7.817844343185425
+epoch:80 trainLoss:7.798648238182068
+TESTING: epoch:80 testLoss:10.154326629638671
+epoch:81 trainLoss:7.782433724403381
+epoch:82 trainLoss:7.765482926368714
+epoch:83 trainLoss:7.7487328290939335
+epoch:84 trainLoss:7.732994270324707
+epoch:85 trainLoss:7.717173743247986
+epoch:86 trainLoss:7.701200604438782
+epoch:87 trainLoss:7.686944794654846
+epoch:88 trainLoss:7.670161604881287
+epoch:89 trainLoss:7.653030252456665
+epoch:90 trainLoss:7.63812255859375
+TESTING: epoch:90 testLoss:10.280241966247559
+epoch:91 trainLoss:7.62429370880127
+epoch:92 trainLoss:7.609086680412292
+epoch:93 trainLoss:7.593705153465271
+epoch:94 trainLoss:7.581442165374756
+epoch:95 trainLoss:7.5662367105484005
+epoch:96 trainLoss:7.552229809761047
+epoch:97 trainLoss:7.53899986743927
+epoch:98 trainLoss:7.522664141654968
+epoch:99 trainLoss:7.512862753868103

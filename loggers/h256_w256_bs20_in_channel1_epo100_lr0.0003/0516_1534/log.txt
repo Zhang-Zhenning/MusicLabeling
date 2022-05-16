@@ -1,0 +1,23 @@
+---------------------------TRIANING MODE----------------------------
+cur device is:  cuda:0
+BasicModel(
+  (backbone): Sequential(
+    (input-conv2d): Conv2d(1, 2, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+    (input-bn): BatchNorm2d(2, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (input-maxPool): MaxPool2d(kernel_size=(3, 3), stride=2, padding=(1, 1), dilation=1, ceil_mode=False)
+    (input-relu): ReLU(inplace=True)
+    (0:inter-2-4-conv2d): Conv2d(2, 4, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+    (0:inter-bn): BatchNorm2d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (0:inter-maxPool): MaxPool2d(kernel_size=(3, 3), stride=2, padding=(1, 1), dilation=1, ceil_mode=False)
+    (0:inter-relu): ReLU(inplace=True)
+    (1:inter-4-8-conv2d): Conv2d(4, 8, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+    (1:inter-bn): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (1:inter-maxPool): MaxPool2d(kernel_size=(3, 3), stride=2, padding=(1, 1), dilation=1, ceil_mode=False)
+    (1:inter-relu): ReLU(inplace=True)
+  )
+  (conv1): Conv2d(8, 194, kernel_size=(3, 3), stride=(2, 2))
+  (classifier): Softmax(dim=1)
+  (loss): MSELoss()
+  (loss_ce): BCELoss()
+)
+---------------------------START TRIANING----------------------------

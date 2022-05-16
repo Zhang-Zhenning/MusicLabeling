@@ -4,6 +4,7 @@ import torch.nn.parallel
 from torch.autograd import Variable
 
 
+
 class BasicModel(nn.Module):
     def __init__(self,h,w,in_channel,output_length):
         super(BasicModel,self).__init__()
@@ -41,18 +42,39 @@ class BasicModel(nn.Module):
         cur_w = (self.w // 4) // (4**denses) 
       
         self.conv1 = nn.Conv2d(
-            self.hidden_channel*(2**((self.density-3)//2)), self.output_length, (cur_h-1, cur_w-1), 2, 0)
+            self.hidden_channel*(2**((self.density-3)//2)), 2*self.output_length, (cur_h-1, cur_w-1), 2, 0)
         self.classifier = nn.Softmax(dim=1)
         self.loss = nn.MSELoss()
+        self.loss_ce = nn.BCELoss()
     
     def forward(self,input):
         output1 = self.backbone(input)
         output2 = self.conv1(output1)
-        output2 = output2.reshape((int(output2.size()[0]),1,1,self.output_length))
+        output2 = output2.reshape((int(output2.size()[0]),1,self.output_length,2))
+        m = torch.squeeze(output2)
+        temp = None
         
-        # final_output = self.classifier(torch.squeeze(output2))
-        final_output = output2
+        if int(len(m.size())) <= 2:
+            m = torch.unsqueeze(m,0)
+
+        for i in range(int(m.size(0))):
+            cur = m[i]
+            
+            # print(cur.size())
+            cur = self.classifier(cur)
+            cur = torch.unsqueeze(cur, 0)
+
+            if temp == None:
+                temp = cur
+                continue
+            else:
+                temp = torch.cat((temp, cur), dim=0)
+        
+        final_output = temp
 
         return final_output
+    
+   
+
         
 

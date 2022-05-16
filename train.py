@@ -89,13 +89,17 @@ if __name__ == "__main__":
         ran = random.sample(range(0, num_musics),int(train_ratio*num_musics) )
 
         train_labels,train_musics,test_labels,test_musics = [],[],[],[]
+        train_idx = []
+        test_idx = []
         for i in range(num_musics):
             if i in ran:
                 train_labels.append(labels[i][1])
                 train_musics.append(musics[i][1])
+                train_idx.append(i)
             else:
                 test_labels.append(labels[i][1])
                 test_musics.append(musics[i][1])
+                test_idx.append(i)
         del musics
         del labels
 
@@ -131,6 +135,9 @@ if __name__ == "__main__":
         if not os.path.exists(log_dir):
             os.makedirs(log_dir)
         
+        save_obj(train_idx,os.path.join(log_dir,"train_idx"))
+        save_obj(test_idx,os.path.join(log_dir,"test_idx"))
+        
         orig_stdout = sys.stdout
         f = open(os.path.join(log_dir, f'log.txt'),'w')
         sys.stdout = f
@@ -160,13 +167,21 @@ if __name__ == "__main__":
                 cur_label = cur_label.to(device)
 
                 predict_output = model(cur_data)
+                
+                tl = None
+                for j in range(cur_data.size()[0]):
+                    k = model.loss_ce(predict_output[j],cur_label[j])
+                    if tl == None:
+                        tl = k
+                    else:
+                        tl += k
 
-                cur_loss = model.loss(torch.squeeze(predict_output).float(),torch.squeeze(cur_label).float())
+
                 optimizer.zero_grad()
-                cur_loss.backward(retain_graph=True)
+                tl.backward(retain_graph=True)
                 optimizer.step()
 
-                total_loss += cur_loss.detach().item()
+                total_loss += tl.detach().item()
                 num_loss += 1
 
             
@@ -177,22 +192,29 @@ if __name__ == "__main__":
             torch.save(model, os.path.join(model_dir, f'BasicModel_{cur_epoch+1}.pth'))
 
             if cur_epoch % 10 == 0:
-                test_loss = 0
-                test_num = 0
-                # now we need to test the intermediate result
-                for idx,(cur_data,cur_label) in enumerate(test_dataloader):
-                    cur_data = cur_data.to(device)
-                    cur_label = torch.squeeze(cur_label)
-                    cur_label = cur_label.to(device)
+                with torch.no_grad():
+                    test_loss = 0
+                    test_num = 0
+                    # now we need to test the intermediate result
+                    for idx,(cur_data,cur_label) in enumerate(test_dataloader):
+                        cur_data = cur_data.to(device)
+                        cur_label = torch.squeeze(cur_label)
+                        cur_label = cur_label.to(device)
 
-                    predict_output = model(cur_data)
+                        predict_output = model(cur_data)
+                        tl = None
+                        for j in range(cur_data.size()[0]):
+                            k = model.loss_ce(predict_output[j],cur_label[j])
+                            if tl == None:
+                                tl = k
+                            else:
+                                tl += k
 
-                    cur_loss = model.loss(torch.squeeze(
-                        predict_output).float(), torch.squeeze(cur_label).float())
-                    test_loss += cur_loss.detach().item()
-                    test_num += 1
+                       
+                        test_loss += tl.detach().item()
+                        test_num += 1
                 
-                print('TESTING: epoch:{0} testLoss:{1}'.format(cur_epoch,test_loss/test_num))
+                    print('TESTING: epoch:{0} testLoss:{1}'.format(cur_epoch,test_loss/test_num))
 
 
 

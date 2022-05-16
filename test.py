@@ -31,7 +31,7 @@ if __name__ == "__main__":
     parser.add_argument('--resultPath', type=str,
                         default="./loggers/eval_result", help='the path we would like to store the eval result')
     parser.add_argument('--evalModelPath', type=str,
-                        default="./loggers/h256_w256_bs20_in_channel1_epo100_lr0.0003/0512_0147/models/BasicModel_20.pth", help='the model we would like to use')
+                        default="./loggers/h256_w256_bs20_in_channel1_epo100_lr0.0003/0516_1552/models/BasicModel_25.pth", help='the model we would like to use')
 
     # --------------------------------------parse config-----------------------------------
     commands = parser.parse_args()
@@ -68,10 +68,11 @@ if __name__ == "__main__":
     for (eval_batch, eval_label) in eval_dataloader:
         with torch.no_grad():
             eval_batch = eval_batch.to(device)
-            eval_result = torch.squeeze(
-                model(eval_batch)).detach().cpu().numpy()
+            eval_result = model(eval_batch)
 
-            print(eval_result)
+            print_value = eval_result.detach().numpy()
+            print(print_value[0][:,1])
+           
 
     print("----------------------------TESTING FINISH-----------------------------")
 

@@ -142,16 +142,15 @@ class MyDataset(data.Dataset):
         if self.transform is not None:
             curImage = self.transform(curImage)
             curLabel = torch.from_numpy(np.array(curLabel))
+            curLabel = torch.eye(2)[curLabel.long(), :]
+
         else:
             curImage = torch.from_numpy(curImage)
             curLabel = torch.from_numpy(np.array(curLabel))
-            # curImage = torch.unsqueeze(curImage,dim=1)
-            
+            curLabel = torch.eye(2)[curLabel.long(), :]            
         return curImage,curLabel
     
 
-label_d = load_obj("./tools/label_dict")
-prepare_musics_and_labels(label_d)
 
 
 
