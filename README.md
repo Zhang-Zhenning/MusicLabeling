@@ -1,5 +1,12 @@
-To evaluating the music:
+This is an AutoEncoder-based model for music labeling task. We label music files with tags like instrument type, tonal characteristics, mood characteristics represented by music. The output will be a probability array where each element is a float value between 0-1, indicating the probability of that label.
 
+To train the model and preprocessing the musicfile:
+    
+    The main file will be train.py and utils.py
+   
+
+To evaluating the music:
+ 
     The main file will be test.py
 
 
